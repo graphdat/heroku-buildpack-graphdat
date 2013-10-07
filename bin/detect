@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+# ------------------------
+
+# parse and derive params
+BUILD_DIR=$1
+
+if [ ! -f $BUILD_DIR/graphdat/conf/graphdat.conf ]
+then
+  echo "Graphdat not found" && exit 1
+else
+  echo "Graphdat found" && exit 0
+fi

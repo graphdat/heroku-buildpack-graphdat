@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+# ------------------------
+
+# fail fast
+set -e
+
+# debug
+# set -x
+
+# parse and derive params
+BUILD_DIR=$1
+CACHE_DIR=$2
+BUILDPACK_BIN=$(dirname $0)
+BUILDPACK_DIR=$(cd $(dirname $0) && cd .. && pwd)
+
+# graphdat params
+GRAPHDAT_AGENT=http://static.graphdat.com/packages/heroku/graphdat.tar.gz
+# you previously set the GRAPHDAT_AGENT_TOKEN var right?
+API_TOKEN=GRAPHDAT_AGENT_TOKEN
+
+# ------------------------
+
+function header() {
+  echo "-----> $*"
+}
+
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+# --------------------
+# --- installation ---
+# --------------------
+
+cd $BUILD_DIR
+
+header "Grabbing the latest graphdat agent"
+curl -s $GRAPHDAT_AGENT | tar xz
+
+header "Creating your configuration file"
+curl -s -d "{\"token\":\"$API_TOKEN\"}" -H "Content-Type: application/json" https://dashboard.graphdat.com/agent/config --output ./graphdat/conf/graphdat.conf
+
+indent "adding your hostname"
+echo "" >> ./graphdat/conf/graphdat.conf
+echo "hostname": $(hostname) >> ./graphdat/conf/graphdat.conf
+
+cp $BUILDPACK_BIN/boot.sh .
+
+header "all done"

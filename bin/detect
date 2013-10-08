@@ -2,17 +2,5 @@
 # bin/detect <build-dir>
 # ------------------------
 
-# fail fast
-set -e
-
-# debug
-set -x
-
-# parse and derive params
-BUILD_DIR=$1
-
-if [ -f $1/graphdat/bin/graphdat-agent ]; then
-  echo "graphdat" && exit 0
-else
-  echo "no-graphdat" && exit 1
-fi
+# if we were include, install it
+echo "graphdat" && exit 0

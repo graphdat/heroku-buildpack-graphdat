@@ -17,7 +17,7 @@ BUILDPACK_DIR=$(cd $(dirname $0) && cd .. && pwd)
 # graphdat params
 GRAPHDAT_AGENT=http://static.graphdat.com/packages/heroku/graphdat.tar.gz
 # you previously set the GRAPHDAT_AGENT_TOKEN var right?
-API_TOKEN=$GRAPHDAT_AGENT_TOKEN
+API_TOKEN=$(GRAPHDAT_AGENT_TOKEN)
 
 # ------------------------
 

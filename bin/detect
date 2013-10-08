@@ -2,6 +2,12 @@
 # bin/detect <build-dir>
 # ------------------------
 
+# fail fast
+set -e
+
+# debug
+set -x
+
 # parse and derive params
 BUILD_DIR=$1
 

@@ -1,7 +1,0 @@
-adduser
-libc6
-libssl0.9.8
-libssh2-1
-libcurl3
-libcap2-bin
-libpcap0.8

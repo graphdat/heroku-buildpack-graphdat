@@ -11,9 +11,8 @@ set -x
 # parse and derive params
 BUILD_DIR=$1
 
-if [ ! -f $BUILD_DIR/graphdat/conf/graphdat.conf ]
-then
-  echo "Graphdat not found" && exit 1
+if [ -f $1/graphdat/bin/graphdat-agent ]; then
+  echo "graphdat" && exit 0
 else
-  echo "Graphdat found" && exit 0
+  echo "no-graphdat" && exit 1
 fi

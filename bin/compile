@@ -16,8 +16,6 @@ BUILDPACK_DIR=$(cd $(dirname $0) && cd .. && pwd)
 
 # graphdat params
 GRAPHDAT_AGENT=http://static.graphdat.com/packages/heroku/graphdat.tar.gz
-# you previously set the GRAPHDAT_AGENT_TOKEN var right?
-API_TOKEN=$(GRAPHDAT_AGENT_TOKEN)
 
 # ------------------------
 
@@ -43,7 +41,7 @@ header "Grabbing the latest graphdat agent"
 curl -s $GRAPHDAT_AGENT | tar xz
 
 header "Creating your configuration file"
-curl -s -d "{\"token\":\"$API_TOKEN\"}" -H "Content-Type: application/json" https://dashboard.graphdat.com/agent/config --output ./graphdat/conf/graphdat.conf
+curl -s -d "{\"token\":\"$GRAPHDAT_AGENT_TOKEN\"}" -H "Content-Type: application/json" https://dashboard.graphdat.com/agent/config --output ./graphdat/conf/graphdat.conf
 
 indent "adding your hostname"
 echo "" >> ./graphdat/conf/graphdat.conf

@@ -12,13 +12,22 @@ Enable the multipack buildpack
 
     heroku config:set BUILDPACK_URL=https://github.com/graphdat/heroku-buildpack-multi
 
-Create `.buildpacks` file:
+Create a file named `.buildpacks` with the following lines in it:
+
+For NodeJS projects, add these lines
 
     https://github.com/graphdat/heroku-buildpack-apt
     https://github.com/graphdat/heroku-buildpack-graphdat.git
     https://github.com/heroku/heroku-buildpack-nodejs.git
 
-Create `Aptfile` packages that Graphdat depends on:
+For Ruby projects, add these lines
+
+    https://github.com/graphdat/heroku-buildpack-apt
+    https://github.com/graphdat/heroku-buildpack-graphdat.git
+    https://github.com/heroku/heroku-buildpack-ruby
+
+Create a file named `Aptfile` containing all of the packages the Graphdat agent depends on:
+
     adduser
     libc6
     libssl0.9.8

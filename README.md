@@ -1,10 +1,10 @@
 # heroku-buildpack-graphdat
 
-Adda the Graphdat agent to your heroku dyno.
+Add the Graphdat agent to your heroku dyno.
 
 ## Usage
 
-Set `GRAPHDAT_AGENT_TOKEN` variable to your agent's token (from your graphdat settings):
+Set `GRAPHDAT_AGENT_TOKEN` variable to be your agent's token (from your graphdat settings -> agent API token):
 
     heroku config:set GRAPHDAT_AGENT_TOKEN=api.bd7060f566
 
@@ -16,7 +16,7 @@ Create `.buildpacks` file:
 
     https://github.com/graphdat/heroku-buildpack-apt
     https://github.com/graphdat/heroku-buildpack-graphdat.git
-    https://github.com/heroku/heroku-buildpack-nodejs.gitd
+    https://github.com/heroku/heroku-buildpack-nodejs.git
 
 Create `Aptfile` packages that Graphdat depends on:
     adduser

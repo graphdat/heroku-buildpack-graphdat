@@ -40,9 +40,8 @@ cd $BUILD_DIR
 header "Grabbing the latest graphdat agent"
 curl -s $GRAPHDAT_AGENT | tar xz
 
-header "Creating your configuration file using token '$GRAPHDAT_AGENT_TOKEN'"
+header "Creating your configuration file using token \"$GRAPHDAT_AGENT_TOKEN\""
 curl -s -d "{\"token\":\"$GRAPHDAT_AGENT_TOKEN\"}" -H "Content-Type: application/json" https://dashboard.graphdat.com/agent/config --output ./graphdat/conf/graphdat.conf
-cat ./graphdat/conf/graphdat.conf
 
 indent "adding your hostname"
 echo "" >> ./graphdat/conf/graphdat.conf

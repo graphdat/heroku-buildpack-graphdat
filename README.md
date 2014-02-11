@@ -36,6 +36,13 @@ Create a file named `Aptfile` containing all of the packages the Graphdat agent 
     libcap2-bin
     libpcap0.8
 
+
+The buildpack currently depends on the [user env compile](https://devcenter.heroku.com/articles/labs-user-env-compile) labs addon to be able to access the Graphdat API key.  To enable run:
+
+    heroku labs:enable user-env-compile
+
+On your next deployment, the Graphdat agent will install along with your application.
+
 ## Bugs
 
 Please report any bugs to using the issue tracker.
